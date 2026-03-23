@@ -1,26 +1,35 @@
 body {
-  margin: 0;
+  margin:0;
   font-family: Arial;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: linear-gradient(135deg,#ffd6e8,#ffe6f0);
-  overflow: hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  background: linear-gradient(135deg,#ffdde1,#ee9ca7);
 }
 
 .card {
-  background:white;
+  background: rgba(255,255,255,0.95);
   padding:30px;
   border-radius:15px;
   text-align:center;
-  width: 320px;
-  transition: all 0.3s ease;
+  width:320px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+.text {
+  color:#333;
 }
 
 .envelope {
   font-size:60px;
   margin-bottom:10px;
+  animation: float 2s infinite;
+}
+
+@keyframes float {
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
 }
 
 .passwordBox {
@@ -44,26 +53,27 @@ button {
   border:none;
   border-radius:20px;
   cursor:pointer;
-}
-
-/* Dark cinematic mode */
-body.dark {
-  background: radial-gradient(circle, #1a001f, #000);
+  background:#ff4d6d;
   color:white;
 }
 
-/* YES animation */
+/* Dark mode */
+body.dark {
+  background: radial-gradient(circle,#000,#1a001f);
+}
+
+body.dark .card {
+  background: rgba(0,0,0,0.8);
+}
+
+body.dark .text {
+  color:#fff;
+}
+
 #yesBtn {
   background:#ff4d6d;
   color:white;
-  transition: all 0.3s ease;
   animation: heartbeat 1.2s infinite;
-}
-
-/* keep NO visible */
-#noBtn {
-  background:#ddd;
-  position: relative;
 }
 
 @keyframes heartbeat {
