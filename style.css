@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #ffd6e8, #ffe6f0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hearts::before {
+  content: "💖 💕 💘 💝 💗 💓 💞";
+  position: fixed;
+  top: -10%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  animation: floatHearts 10s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes floatHearts {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(120vh); }
+}
+
+.card {
+  background: white;
+  padding: 35px 45px;
+  border-radius: 20px;
+  text-align: center;
+  width: 330px;
+  animation: fadeIn 1.2s ease;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.emoji {
+  font-size: 55px;
+  margin-bottom: 10px;
+}
+
+.bounce {
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+h2 {
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+button {
+  padding: 10px 25px;
+  border-radius: 25px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#yesBtn {
+  background: #ff4d6d;
+  color: white;
+}
+
+#noBtn {
+  background: #eee;
+}
+
+input {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  width: 100%;
+  text-align: center;
+}
+
+#shareBtn {
+  margin-top: 15px;
+  background: #25D366;
+  color: white;
+}
+
+#musicBtn {
+  margin-top: 10px;
+  background: #6c63ff;
+  color: white;
+}
