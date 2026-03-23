@@ -7,14 +7,24 @@
 </head>
 <body>
 
-  <div class="card">
-    <h2>Tripti 🐾</h2>
-    <p>I made something for you 😊</p>
-    <button onclick="startGame()">Start 💖</button>
+  <div class="card" id="lockScreen">
+    <div class="envelope">✉️</div>
+    <h2>A message for you 💌</h2>
+    <p>Complete the verse to unlock</p>
+
+    <div class="passwordBox">
+      <span>Romans :</span>
+      <input type="text" id="part1" maxlength="1" placeholder="8" />
+      <span>:</span>
+      <input type="text" id="part2" maxlength="2" placeholder="28" />
+    </div>
+
+    <button onclick="unlock()">Unlock 🔓</button>
+    <p id="error"></p>
   </div>
 
   <audio id="bgMusic" loop>
-    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3">
   </audio>
 
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
