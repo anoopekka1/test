@@ -6,6 +6,7 @@ body {
   align-items: center;
   height: 100vh;
   background: linear-gradient(135deg,#ffd6e8,#ffe6f0);
+  overflow: hidden;
 }
 
 .card {
@@ -13,10 +14,13 @@ body {
   padding:30px;
   border-radius:15px;
   text-align:center;
+  width: 320px;
+  transition: all 0.3s ease;
 }
 
 .envelope {
   font-size:60px;
+  margin-bottom:10px;
 }
 
 .passwordBox {
@@ -29,18 +33,40 @@ body {
 .passwordBox input {
   width:40px;
   text-align:center;
+  padding:6px;
+  border-radius:6px;
+  border:1px solid #ccc;
 }
 
+button {
+  margin-top:12px;
+  padding:10px 18px;
+  border:none;
+  border-radius:20px;
+  cursor:pointer;
+}
+
+/* Dark cinematic mode */
 body.dark {
-  background:black;
+  background: radial-gradient(circle, #1a001f, #000);
   color:white;
 }
 
+/* YES animation */
 #yesBtn {
-  animation:heartbeat 1s infinite;
+  background:#ff4d6d;
+  color:white;
+  transition: all 0.3s ease;
+  animation: heartbeat 1.2s infinite;
+}
+
+/* keep NO visible */
+#noBtn {
+  background:#ddd;
+  position: relative;
 }
 
 @keyframes heartbeat {
   0%,100%{transform:scale(1)}
-  50%{transform:scale(1.2)}
+  50%{transform:scale(1.15)}
 }
