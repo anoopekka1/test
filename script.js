@@ -1,104 +1,11 @@
-const card=document.querySelector(".card");
-let count=0,yesSize=1;
-
-document.addEventListener("DOMContentLoaded",()=>{
-let p1=document.getElementById("part1");
-let p2=document.getElementById("part2");
-p1.focus();
-p1.oninput=()=>{if(p1.value.length===1)p2.focus();}
-p2.onkeydown=(e)=>{if(e.key==="Backspace"&&!p2.value)p1.focus();}
-});
-
-function unlock(){
-let p1=document.getElementById("part1").value;
-let p2=document.getElementById("part2").value;
-if(p1==="8"&&p2==="28") startGame();
-else document.getElementById("error").innerText="Almost there 💭";
-}
-
-function startGame(){
-card.innerHTML=`
-<h2 class="text">Tripti 🐾</h2>
-<p class="text">🐶🐱🐾</p>
-<p class="text">You spend your days caring for others… 🐾</p>
-<p class="text">especially those who can’t speak for themselves 💖</p>
-<p class="text">Today, I just wanted to make you smile 😊</p>
-<button onclick="step2()">Continue ➡️</button>`;
-}
-
-function step2(){
-count=0;
-card.innerHTML=`
-<h2 class="text">💖 Catch this</h2>
-<p class="text">(Click 4 times)</p>
-<button id="heart">💖</button>`;
-let heart=document.getElementById("heart");
-heart.onclick=()=>{
-count++;
-if(count===3) giggleBurst();
-if(count>=4) step3();
-heart.style.transform=`translate(${Math.random()*120-60}px,${Math.random()*120-60}px)`;
-};
-}
-
-function giggleBurst(){
-for(let i=0;i<25;i++){
-setTimeout(()=>{
-let span=document.createElement("span");
-span.innerText="🤭";
-span.style.position="fixed";
-span.style.left=Math.random()*100+"vw";
-span.style.top="100vh";
-span.style.fontSize="26px";
-span.style.animation="floatSpin 2.5s ease-out forwards";
-document.body.appendChild(span);
-setTimeout(()=>span.remove(),2500);
-},i*80);
-}
-}
-
-function step3(){
-card.innerHTML=`
-<p class="text">I know things didn’t happen the right way before...</p>
-<p class="text"><b>But maybe timing has its own way of teaching us things 💖</b></p>
-<p class="text">And now, I feel like taking a step forward… with you, Tripti.</p>
-<button onclick="step4()">One more thing… 😏</button>`;
-}
-
-function step4(){
-document.getElementById("bgMusic").play().catch(()=>{});
-card.innerHTML=`
-<h3 class="text">Tripti… 💖</h3>
-<h3 class="text">How about we start with a coffee… and see where it goes? ☕🌸</h3>
-<button id="yesBtn" onclick="dateYes()">YES 💘</button>
-<button onclick="moveNo()">Not sure 🤔</button>`;
-}
-
-function moveNo(){
-event.target.style.transform=`translate(${Math.random()*100-50}px,${Math.random()*100-50}px)`;
-}
-
-function dateYes(){
-confetti({particleCount:150,spread:100});
-card.innerHTML=`
-<h2 class="text">💞 Perfect 💞</h2>
-<p class="text">📍 I found a place… thought of you ☕</p>
-<p class="text">📅 5th April 2026</p>
-<p class="text">🕒 6:00 PM</p>
-<button onclick="confirmDate()">Confirm 💘</button>`;
-}
-
-function confirmDate(){
-const end=Date.now()+2000;
-(function frame(){
-confetti({particleCount:4,angle:60,spread:50,origin:{x:0}});
-confetti({particleCount:4,angle:120,spread:50,origin:{x:1}});
-if(Date.now()<end) requestAnimationFrame(frame);
-})();
-card.innerHTML=`
-<h2 class="text">💞 It’s a Date! 💞</h2>
-<p class="text">📅 5th April 2026</p>
-<p class="text">🕒 6:00 PM</p>
-<p class="text">See you soon Tripti ❤️</p>
-<p class="text">✨ I’ll be waiting… ☕</p>`;
-}
+const card=document.querySelector(".card");let count=0;
+document.addEventListener("DOMContentLoaded",()=>{let p1=document.getElementById("part1");let p2=document.getElementById("part2");p1.focus();p1.oninput=()=>{if(p1.value.length===1)p2.focus()};p2.onkeydown=(e)=>{if(e.key==="Backspace"&&!p2.value)p1.focus()}});
+function unlock(){let p1=document.getElementById("part1").value;let p2=document.getElementById("part2").value;if(p1==="8"&&p2==="28")startGame();else document.getElementById("error").innerText="Almost there 💭";}
+function startGame(){card.innerHTML=`<h2 class="text">Tripti 🐾</h2><p class="text" style="font-size:20px;">🐶🐱🐾</p><p class="text"><b>You spend your days caring for others… 🐾</b></p><p class="text">especially those who can’t speak for themselves 💖</p><p class="text">Today, I just wanted to make you smile 😊</p><button onclick="step2()">Continue ➡️</button>`;}
+function step2(){count=0;let size=1;card.innerHTML=`<h2 class="text">💖 Catch this</h2><p class="text">(Click 4 times)</p><button id="heart" style="font-size:30px;">💖</button>`;let heart=document.getElementById("heart");heart.onclick=()=>{count++;size+=0.3;heart.style.transform=`scale(${size})`;heart.style.animation="bounce 0.3s";setTimeout(()=>heart.style.animation="",300);if(count===3)giggleBurst();if(count>=4)setTimeout(step3,300);};}
+function giggleBurst(){for(let i=0;i<25;i++){setTimeout(()=>{let span=document.createElement("span");span.innerText="🤭";span.style.position="fixed";span.style.left=Math.random()*100+"vw";span.style.top="100vh";span.style.fontSize="26px";span.style.animation="floatSpin 2.5s ease-out forwards";document.body.appendChild(span);setTimeout(()=>span.remove(),2500);},i*80);}}
+function step3(){card.innerHTML=`<p class="text">I know things didn’t happen the right way before...</p><p class="text"><b>But maybe timing has its own way of teaching us things 💖</b></p><p class="text">And now, I feel like taking a step forward… with you, Tripti.</p><button onclick="step4()">One more thing… 😏</button>`;}
+function step4(){document.getElementById("bgMusic").play().catch(()=>{});card.innerHTML=`<h3 class="text">Tripti… 💖</h3><h3 class="text">How about we start with a coffee… and see where it goes? ☕🌸</h3><button id="yesBtn" onclick="dateYes()">YES 💘</button><button onclick="moveNo()">Not sure 🤔</button>`;}
+function moveNo(){event.target.style.transform=`translate(${Math.random()*100-50}px,${Math.random()*100-50}px)`;}
+function dateYes(){confetti({particleCount:150,spread:100});card.innerHTML=`<h2 class="text">💞 Perfect 💞</h2><p class="text">📍 <a href="https://share.google/uMbCrviz6Fdm2ZPjz" target="_blank">I found a place… thought of you ☕</a></p><p class="text">📅 5th April 2026</p><p class="text">🕒 6:00 PM</p><button onclick="confirmDate()">Confirm 💘</button>`;}
+function confirmDate(){const end=Date.now()+2000;(function frame(){confetti({particleCount:4,angle:60,spread:50,origin:{x:0}});confetti({particleCount:4,angle:120,spread:50,origin:{x:1}});if(Date.now()<end)requestAnimationFrame(frame);})();card.innerHTML=`<h2 class="text">💞 It’s a Date! 💞</h2><p class="text">📅 5th April 2026</p><p class="text">🕒 6:00 PM</p><p class="text">See you soon Tripti ❤️</p><p class="text">✨ I’ll be waiting… ☕</p>`;}
