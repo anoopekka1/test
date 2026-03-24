@@ -2,39 +2,7 @@ const card=document.querySelector(".card");let count=0;
 document.addEventListener("DOMContentLoaded",()=>{let p1=document.getElementById("part1");let p2=document.getElementById("part2");p1.focus();p1.oninput=()=>{if(p1.value.length===1)p2.focus()};p2.onkeydown=(e)=>{if(e.key==="Backspace"&&!p2.value)p1.focus()}});
 function unlock(){let p1=document.getElementById("part1").value;let p2=document.getElementById("part2").value;if(p1==="8"&&p2==="28")startGame();else document.getElementById("error").innerText="Almost there 💭";}
 function startGame(){card.innerHTML=`<h2 class="text">Tripti 🐾</h2><p class="text" style="font-size:20px;">🐶🐱🐾</p><p class="text"><b>You spend your days caring for others… 🐾</b></p><p class="text">especially those who can’t speak for themselves 💖</p><p class="text">Today, I just wanted to make you smile 😊</p><button onclick="step2()">Continue ➡️</button>`;}
-function step2(){
-  count = 0;
-  let size = 1;
-
-  card.innerHTML = `
-    <h2 class="text">💖 Catch this</h2>
-    <button id="heart" style="font-size:30px; position:relative;">💖</button>
-  `;
-
-  let heart = document.getElementById("heart");
-
-  heart.onclick = () => {
-    count++;
-
-    // 💓 grow + bounce
-    size += 0.3;
-    heart.style.transform = `scale(${size})`;
-    heart.style.animation = "bounce 0.3s";
-    setTimeout(()=>heart.style.animation="",300);
-
-    // 🤭 3rd click
-    if(count === 3) giggleBurst();
-
-    // 👉 4th click → next
-    if(count >= 4) setTimeout(step3,300);
-
-    // 🎯 move randomly
-    const x = Math.random() * 200 - 100;
-    const y = Math.random() * 200 - 100;
-
-    heart.style.transform += ` translate(${x}px, ${y}px)`;
-  };
-}
+function step2(){count=0;let size=1;card.innerHTML=`<h2 class="text">💖 Catch this</h2><button id="heart" style="font-size:30px; position:relative;">💖</button>`;let heart=document.getElementById("heart");heart.onclick=()=>{count++;size+=0.3;heart.style.transform=`scale(${size})`;heart.style.animation="bounce 0.3s";setTimeout(()=>heart.style.animation="",300);if(count===3)giggleBurst();if(count>=4)setTimeout(step3,300);const x=Math.random()*200-100;const y=Math.random()*200-100;heart.style.transform+=` translate(${x}px,${y}px)`;};}
 function giggleBurst(){for(let i=0;i<25;i++){setTimeout(()=>{let span=document.createElement("span");span.innerText="🤭";span.style.position="fixed";span.style.left=Math.random()*100+"vw";span.style.top="100vh";span.style.fontSize="26px";span.style.animation="floatSpin 2.5s ease-out forwards";document.body.appendChild(span);setTimeout(()=>span.remove(),2500);},i*80);}}
 function step3(){card.innerHTML=`<p class="text">I know things didn’t happen the right way before...</p><p class="text"><b>But maybe timing has its own way of teaching us things 💖</b></p><p class="text">And now, I feel like taking a step forward… with you, Tripti.</p><button onclick="step4()">One more thing… 😏</button>`;}
 function step4(){document.getElementById("bgMusic").play().catch(()=>{});card.innerHTML=`<h3 class="text">Tripti… 💖</h3><h3 class="text">How about we start with a coffee… and see where it goes? ☕🌸</h3><button id="yesBtn" onclick="dateYes()">YES 💘</button><button onclick="moveNo()">Not sure 🤔</button>`;}
